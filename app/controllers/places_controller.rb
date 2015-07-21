@@ -11,7 +11,7 @@ class PlacesController < ApplicationController
   def new
   end
 
-  def submitted
+  def create
     Place.create title: params[:title],
                  price: (params[:price].to_f * 100).to_i,
                  photo_url: params[:url],
@@ -26,10 +26,10 @@ class PlacesController < ApplicationController
 
   def update
     @place = Place.find(params[:id])
-    @place.update title: params[:title],
-                 price: (params[:price].to_f * 100).to_i,
-                 photo_url: params[:url],
-                 desc: params[:desc]
+     @place.update title: params[:title],
+                  price: (params[:price].to_f * 100).to_i,
+                  photo_url: params[:url],
+                  desc: params[:desc]
 
     redirect_to "/places/#{@place.id}"
   end
